@@ -8,13 +8,12 @@
 
   Promise = require('bluebird');
 
-  fs = require('fs');
+  fs = Promise.promisifyAll(require('fs'));
 
-  fs.writeFile('.test_files/message.txt', 'Hello Node!', function(err) {
-    if (err) {
-      throw err;
-    }
-    return console.log('It\'s saved!');
+  fs.writeFileAsync('./test_files/message1.txt', 'Hello Node!').then(function() {
+    console.log('It\'s saved!');
+  }).error(function(error) {
+    console.log(error);
   });
 
 }).call(this);
