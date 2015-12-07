@@ -10,6 +10,8 @@
 
   file = require('./file');
 
-  file.save('./test_files/message1.txt', 'What?');
+  setInterval(function() {
+    file.save('./test_files/message1.txt', 'What?');
+  }, 10000);
 
 }).call(this);

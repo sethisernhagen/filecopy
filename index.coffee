@@ -3,4 +3,8 @@ app = express()
 Promise = require('bluebird')
 file = require('./file')
 
-file.save('./test_files/message1.txt', 'What?')
+setInterval(() ->
+	file.save('./test_files/message1.txt', 'What?')
+	return
+10000)
+# file.save('./test_files/message1.txt', 'What?')
