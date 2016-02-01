@@ -15,12 +15,15 @@ let copyFolders = [{
   dest: '/Users/seth/Documents/zzz_output2'
 }];
 
-for(let copyFolder of copyFolders) {
-  copy(copyFolder.src, copyFolder.dest, { overwrite: true })
-    .then(function(results) {
-      console.info('Copied ' + results.length + ' files');
-    })
-    .catch(function(error) {
-      console.error('Copy failed: ' + error);
-    });
-}
+setInterval(function() {
+  for(let copyFolder of copyFolders) {
+    copy(copyFolder.src, copyFolder.dest, { overwrite: true })
+      .then(function(results) {
+        console.info('Copied ' + results.length + ' files');
+      })
+      .catch(function(error) {
+        console.error('Copy failed: ' + error);
+      });
+  }
+}, 3000);
+
