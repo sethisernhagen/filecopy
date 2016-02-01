@@ -3,10 +3,6 @@
 let Promise = require("bluebird");
 let copy = require('recursive-copy');
 
-
-let inputFolder = '/Users/seth/Documents/zzz';
-let outputFolder = '/Users/seth/Documents/zzz_output';
-
 let copyFolders = [{
   src: '/Users/seth/Documents/zzz',
   dest: '/Users/seth/Documents/zzz_output'
@@ -15,9 +11,11 @@ let copyFolders = [{
   dest: '/Users/seth/Documents/zzz_output2'
 }];
 
+let intervalMins = 5
+
 setInterval(function() {
   for(let copyFolder of copyFolders) {
-    copy(copyFolder.src, copyFolder.dest, { overwrite: true })
+    copy(copyFolder.src, copyFolder.dest)
       .then(function(results) {
         console.info('Copied ' + results.length + ' files');
       })
@@ -25,5 +23,5 @@ setInterval(function() {
         console.error('Copy failed: ' + error);
       });
   }
-}, 3000);
+}, 1000);
 
