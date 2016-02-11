@@ -5,7 +5,7 @@ let Promise = require("bluebird");
 let copy = require('recursive-copy');
 let fs = require('fs');
 
-let isFolder = process.argv[2] === 'multi';
+let isFolder = process.argv[2];
 let folderName = process.argv[3];
 let label = process.argv[4];
 let fileName = process.argv[5];
@@ -20,12 +20,21 @@ console.log('fileName =', fileName,
   '\nisfolder =', isFolder,
   '\nlabel', label);
 
-// copy(folderName, dest[label])
-// .then(function(results) {
-//   console.info('Copied ' + results.length + ' files');
-// });
+if (isFolder){
+      copy(folderName, dest[label])
+      .then(function(results) {
+        console.info('Copied ' + results.length + ' files');
+      })
+      .catch(function(error) {
+        console.error('Copy failed: ' + error);
+      });
+} else {
+  // create paths
+  let srcPath = folderName + '/' + fileName;
+  let destPath = dest[label] + '/' + fileName;
+  fs.createReadStream(srcPath).pipe(fs.createWriteStream(destPath));
+}
 
-fs.createReadStream(folderName + '/' + fileName).pipe(fs.createWriteStream(dest[label] + folderName));
 
 // setInterval(function() {
 //   for(let copyFolder of copyFolders) {
