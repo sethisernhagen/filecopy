@@ -20,7 +20,7 @@ console.log('fileName =', fileName,
   '\nisfolder =', isFolder,
   '\nlabel', label);
 
-if (isFolder){
+if (isFolder === 'true'){
       copy(folderName, dest[label])
       .then(function(results) {
         console.info('Copied ' + results.length + ' files');

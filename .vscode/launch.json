@@ -8,7 +8,7 @@
       "program": "index.js",
       "stopOnEntry": false,
       "args": [
-        "false",
+        "true",
         "/Users/seth/Documents/zzz_output",
         "movie",
         "al_gore.jpeg"
