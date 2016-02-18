@@ -11,8 +11,10 @@ let label = process.argv[4];
 let fileName = process.argv[5];
 
 let dest = {
-  tv: '/Users/seth/Documents/zzz_output',
-  movie: '/Users/seth/Documents/zzz_output2'
+  noCouch: 'f:\movie',
+  noSickbeard: 'f:\tv',
+  tv: 'f:\sickbeard_temp',
+  movie: 'f:\sab\couch_completed'
 };
 
 console.log('fileName =', fileName,
